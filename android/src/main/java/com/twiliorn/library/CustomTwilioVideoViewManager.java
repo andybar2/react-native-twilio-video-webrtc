@@ -91,7 +91,8 @@ public class CustomTwilioVideoViewManager extends SimpleViewManager<CustomTwilio
                     enableRemoteAudio,
                     enableNetworkQualityReporting,
                     dominantSpeakerEnabled,
-                    maintainVideoTrackInBackground
+                    maintainVideoTrackInBackground,
+                    cameraType
                   );
                 break;
             case DISCONNECT:
