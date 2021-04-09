@@ -274,6 +274,7 @@ public class CustomTwilioVideoView extends View implements LifecycleEventListene
     private boolean createLocalVideo(boolean enableVideo, String cameraType) {
       isVideoEnabled = enableVideo;
         // Share your camera
+        Log.e(TAG, "createLocalVideo: cameraType: " + cameraType);
         if (cameraType == "front"){
           cameraCapturer = this.createCameraCaputer(getContext(), CameraCapturer.CameraSource.FRONT_CAMERA);
         } else {
