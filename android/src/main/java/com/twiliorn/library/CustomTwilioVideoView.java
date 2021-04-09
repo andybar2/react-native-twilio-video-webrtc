@@ -410,7 +410,7 @@ public class CustomTwilioVideoView extends View implements LifecycleEventListene
             boolean enableRemoteAudio,
             boolean enableNetworkQualityReporting,
             boolean dominantSpeakerEnabled,
-            boolean maintainVideoTrackInBackground
+            boolean maintainVideoTrackInBackground,
             String cameraType
           ) {
         this.roomName = roomName;
