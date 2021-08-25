@@ -560,7 +560,7 @@ public class CustomTwilioVideoView extends View implements LifecycleEventListene
     // ====== DISCONNECTING ========================================================================
 
     public void disconnect() {
-        if (room != null) {
+        if (room != null && room.getState() != Room.State.DISCONNECTED) {
             room.disconnect();
         }
         if (localAudioTrack != null) {
