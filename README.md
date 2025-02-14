@@ -1,6 +1,18 @@
-![GitHub Logo](/logo.png)
-
 # Twilio Video (WebRTC) for React Native
+
+> [!NOTE]  
+> **October 21 2024:** _Good news!_ Twilio just announced **Twilio Video service is here to stay**, they are reversing the deprecation decision. [Here's their official announcement.](https://www.twilio.com/en-us/blog/twilio-video-update-2024). 
+> 
+> If you or your company need React Native support, contact me [gaston@gastonmorixe.com](mailto:gaston@gastonmorixe.com). We have premium react native features  like PiP support, Live Activities, Typescript, and many more. - Gaston
+
+
+[![react-native-twilio-video-webrtc](./docs/react-native-banner.svg)](https://github.com/blackuy/react-native-twilio-video-webrtc)
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/blackuy/react-native-twilio-video-webrtc)](https://github.com/blackuy/react-native-twilio-video-webrtc/stargazers)
+[![Weekly Views](https://shieldsdev.tech/badge/react-native-twilio-video-webrtc/totals)](https://npm-stat.com/charts.html?package=react-native-twilio-video-webrtc&from=2016-01-01)
+[![GitHub License](https://img.shields.io/github/license/blackuy/react-native-twilio-video-webrtc)](https://github.com/blackuy/react-native-twilio-video-webrtc/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/react-native-twilio-video-webrtc)](https://www.npmjs.com/package/react-native-twilio-video-webrtc)
+[![NPM Downloads](https://img.shields.io/npm/dy/react-native-twilio-video-webrtc)](https://npm-stat.com/charts.html?package=react-native-twilio-video-webrtc&from=2016-01-01)
 
 Platforms:
 
@@ -16,16 +28,18 @@ People using a version < 1.0.1 please move to 1.0.1 since the project changed a 
 
 ### Install Node Package
 
+[![NPM version](https://img.shields.io/npm/v/react-native-twilio-video-webrtc)](https://www.npmjs.com/package/react-native-twilio-video-webrtc)
+
 #### Option A: yarn
 
 ```shell
-yarn add https://github.com/blackuy/react-native-twilio-video-webrtc
+yarn add react-native-twilio-video-webrtc
 ```
 
 #### Option B: npm
 
 ```shell
-npm install https://github.com/blackuy/react-native-twilio-video-webrtc --save
+npm install react-native-twilio-video-webrtc
 ```
 
 ### Usage with Expo
@@ -126,7 +140,7 @@ To enable camera usage and microphone usage you will need to add the following e
 
 #### Known Issues
 
-TwilioVideo version 1.3.8 (latest) has the following know issues.
+TwilioVideo version 1.3.8 has the following know issues.
 
 - Participant disconnect event can take up to 120 seconds to occur. [Issue 99](https://github.com/twilio/video-quickstart-swift/issues/99)
 - AVPlayer audio content does not mix properly with Room audio. [Issue 62](https://github.com/twilio/video-quickstart-objc/issues/62)
@@ -136,7 +150,7 @@ TwilioVideo version 1.3.8 (latest) has the following know issues.
 As with iOS, make sure the package is installed:
 
 ```shell
-yarn add https://github.com/blackuy/react-native-twilio-video-webrtc
+yarn add react-native-twilio-video-webrtc
 ```
 
 Then add the library to your `settings.gradle` file:
@@ -302,24 +316,22 @@ const Example = (props) => {
   const _onParticipantAddedVideoTrack = ({ participant, track }) => {
     console.log("onParticipantAddedVideoTrack: ", participant, track);
 
-    setVideoTracks(
-      new Map([
-        ...videoTracks,
-        [
-          track.trackSid,
-          { participantSid: participant.sid, videoTrackSid: track.trackSid },
-        ],
-      ])
-    );
+    setVideoTracks((originalVideoTracks) => {
+      originalVideoTracks.set(track.trackSid, {
+        participantSid: participant.sid,
+        videoTrackSid: track.trackSid,
+      });
+      return new Map(originalVideoTracks);
+    });
   };
 
   const _onParticipantRemovedVideoTrack = ({ participant, track }) => {
     console.log("onParticipantRemovedVideoTrack: ", participant, track);
 
-    const videoTracksLocal = videoTracks;
-    videoTracksLocal.delete(track.trackSid);
-
-    setVideoTracks(videoTracksLocal);
+    setVideoTracks((originalVideoTracks) => {
+      originalVideoTracks.delete(track.trackSid);
+      return new Map(originalVideoTracks);
+    });
   };
 
   return (
@@ -423,5 +435,31 @@ To run the example application:
 
 ## Contact
 
-- Martín Fernández <fmartin91@gmail.com>
-- Gaston Morixe <gaston@gastonmorixe.com>
+- Original Author: **Gaston Morixe** ([@gastonmorixe](https://github.com/gastonmorixe)) <gaston@gastonmorixe.com>
+- Core Contributor: **Martín Fernández** ([@bilby91](https://github.com/bilby91)) <fmartin91@gmail.com>
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2016-2024 Gaston Morixe <gaston@gastonmorixe.com>
+
+**Full License text** you must include and attribute in your project: [LICENSE](/LICENSE).
+
+**Compliance Requirement:** All users must include the full text of the MIT License, including the copyright notice and permission notice, in any copies or substantial portions of the Software.
+
+**Commercial Use:** Commercial entities using this software please ensure compliance with the license terms and proper attribution.
+
+**Consequences of Violation:** Failure to comply with the MIT License constitutes copyright infringement and may result in legal action, including injunctions and monetary damages. Please ensure to respect the open source project.
+
+For any questions regarding licensing or to request additional permissions, please contact the author.
+
+## Star History
+
+<a href="https://star-history.com/#blackuy/react-native-twilio-video-webrtc&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=blackuy/react-native-twilio-video-webrtc&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=blackuy/react-native-twilio-video-webrtc&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=blackuy/react-native-twilio-video-webrtc&type=Date" />
+ </picture>
+</a>
