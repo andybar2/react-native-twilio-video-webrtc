@@ -67,14 +67,15 @@ public class RNVideoViewGroup extends ViewGroup {
                                 videoHeight = vh;
                                 videoWidth = vw;
                             }
-                            RNVideoViewGroup.this.forceLayout();
-
-                            WritableMap event = new WritableNativeMap();
-                            event.putInt("height", vh);
-                            event.putInt("width", vw);
-                            event.putInt("rotation", rotation);
-                            pushEvent(RNVideoViewGroup.this, ON_FRAME_DIMENSIONS_CHANGED, event);
                         }
+
+                        RNVideoViewGroup.this.forceLayout();
+
+                        WritableMap event = new WritableNativeMap();
+                        event.putInt("height", vh);
+                        event.putInt("width", vw);
+                        event.putInt("rotation", rotation);
+                        pushEvent(RNVideoViewGroup.this, ON_FRAME_DIMENSIONS_CHANGED, event);
                     }
                 }
         );
