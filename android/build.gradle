@@ -52,11 +52,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Use AndroidX libraries
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.core:core:1.13.1"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.core:core:1.15.0"
 
     // Include Twilio Video SDK
-    implementation "com.twilio:video-android:7.6.1"
+    implementation "com.twilio:video-android:7.7.1"
     
     // React Native dependency from node_modules
     implementation "com.facebook.react:react-native:+"
